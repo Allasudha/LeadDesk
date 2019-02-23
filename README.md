@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple shopping list web application that shows list of products and option to delete and update the product.
+It also provides feature to add product to the shopping list.
 
 ## Available Scripts
 
@@ -8,10 +9,6 @@ In the project directory, you can run:
 
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-Testing is using Jest. Name tests `.test.js` or place them in `__tests__` directory
 
 # Design
 
@@ -46,3 +43,7 @@ State managements is done by Redux. Redux-rematch tries to solve the issue with 
 A React utility belt for function components and higher-order components.
 
 This can avoid using React class based components using Recompose.
+
+### Formik
+
+Formik takes care of the repetitive and annoying stuff--keeping track of values/errors/visited fields, orchestrating validation, and handling submission.
