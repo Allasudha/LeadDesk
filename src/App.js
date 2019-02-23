@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Flex } from 'rebass';
+import PageHeader from './components/PageHeader';
+import Header from './components/Header';
+import ShoppingListContainer from './containers/ShoppingListContainer';
+import AddProductContainer from './containers/AddProductContainer';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+     <Flex justifyContent="center" flexDirection="column" alignItems="center">    	
+	  <PageHeader/>
+	  <Header columns={["Product Name","Amount"]}/>
+	  <ShoppingListContainer/>
+	  <AddProductContainer/>
+	 </Flex>
     );
   }
 }
