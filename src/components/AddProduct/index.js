@@ -65,10 +65,10 @@ const AddProduct = (props) => {
 AddProduct.propTypes = PropTypes;
 
 const handleSubmit = (values,
-  { props },
+  { props, resetForm },
 ) => {
   const { addProduct } = props;
-  addProduct( values );
+  addProduct( values, resetForm );
 };
 
 export default withFormik({ validationSchema, handleSubmit, mapPropsToValues })(

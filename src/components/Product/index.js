@@ -3,7 +3,6 @@ import { string, number, object, func } from 'prop-types';
 import { Flex, Button } from 'rebass';
 import { withFormik } from 'formik';
 import styled from 'styled-components';
-import { defaultProps } from 'recompose';
 import TextInput from '../TextInput';
 import { getError, mapPropsToValues, validationSchema } from '../../util';
 

@@ -8,9 +8,6 @@ const PropTypes = {
     editProduct: func.isRequired,
 };
 
-const DefaultProps = {
-};
-
 const ShoppingList = ({products, removeProduct, editProduct}) => {
   return (
   <React.Fragment>
@@ -21,6 +18,5 @@ const ShoppingList = ({products, removeProduct, editProduct}) => {
 )};
 
 ShoppingList.propTypes = PropTypes;
-ShoppingList.defaultProps = DefaultProps;
 
 export default ShoppingList;
