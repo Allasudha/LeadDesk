@@ -47,3 +47,7 @@ This can avoid using React class based components using Recompose.
 ### Formik
 
 Formik takes care of the repetitive and annoying stuff--keeping track of values/errors/visited fields, orchestrating validation, and handling submission.
+
+
+### Yup
+Used for form validations.

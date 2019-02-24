@@ -13,11 +13,11 @@ const productContainer= compose(
         onSave: (id,values) =>{
             props.setButtonText("Save");
             props.setMode("edit");
-            const value=values;
-            value.id=id;
+            const valuesWithId=values;
+            valuesWithId.id=id;
             if(props.products[id].name!==values.name || props.products[id].amount!==values.amount)
              {
-              props.editProduct(value);
+              props.editProduct(valuesWithId);
               props.setButtonText("Edit");
               props.setMode("view");
              }

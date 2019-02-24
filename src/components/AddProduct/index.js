@@ -1,27 +1,25 @@
-// @flow
 import React from 'react';
-import * as R from 'ramda';
 import { Flex, Button } from 'rebass';
+import { func, object } from 'prop-types';
 import { withFormik } from 'formik';
-import * as yup from 'yup';
 import styled from 'styled-components';
 import TextInput from '../TextInput';
 import Header from '../Header';
+import { getError, mapPropsToValues, validationSchema } from '../../util';
 
-type Props = {
-  handleSubmit: () => void,
+const PropTypes = {
+  values: object.isRequired,
+  errors: object.isRequired,
+  touched: object.isRequired,
+  handleChange: func.isRequired,
+  handleBlur: func.isRequired,
+  handleSubmit:func.isRequired,
 };
 
 const Form = styled.form`
   margin: 0 20px;
   display: flex;
 `;
-
-const getError = (propName, touched, errors) => {
-  const hasTouched = R.prop(propName, touched);
-  const errs = R.prop(propName, errors);
-  return hasTouched && errs ? errs : null;
-};
 
 const AddProduct = (props) => {
   const {
@@ -64,22 +62,15 @@ const AddProduct = (props) => {
   );
 };
 
+AddProduct.propTypes = PropTypes;
+
 const handleSubmit = (values,
   { props },
 ) => {
   const { addProduct } = props;
   addProduct( values );
 };
-const mapPropsToValues = () => ({
-  name: '',
-  amount: '',
-});
-const validationSchema = yup.object().shape({
-  name: yup
-    .string()
-    .required('*Product name is required'),
-  amount: yup.number().required('*Amount is required'),
-});
+
 export default withFormik({ validationSchema, handleSubmit, mapPropsToValues })(
   AddProduct,
 );

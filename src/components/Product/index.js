@@ -1,19 +1,23 @@
 import React from 'react';
-import { string, number, shape } from 'prop-types';
-import { Flex, Button,Text } from 'rebass';
+import { string, number, object, func } from 'prop-types';
+import { Flex, Button } from 'rebass';
 import { withFormik } from 'formik';
-import * as yup from 'yup';
 import styled from 'styled-components';
 import { defaultProps } from 'recompose';
 import TextInput from '../TextInput';
-import AddProduct from '../AddProduct';
-import {getError} from '../../util';
+import { getError, mapPropsToValues, validationSchema } from '../../util';
 
 const PropTypes = {
-  
-};
-
-const DefaultProps = {
+  values: object.isRequired,
+  errors: object.isRequired,
+  touched: object.isRequired,
+  handleChange: func.isRequired,
+  handleBlur: func.isRequired,
+  handleSubmit:func.isRequired,
+  removeProduct: func.isRequired,
+  id: number.isRequired,
+  buttonText: string.isRequired,
+  mode: string.isRequired,
 };
 
 const Form = styled.form`
@@ -24,7 +28,6 @@ const Form = styled.form`
 const Product = ({
     removeProduct, 
     id,
-    onEdit,
     buttonText,
     mode,
     values,
@@ -65,7 +68,6 @@ const Product = ({
 
 
 Product.propTypes = PropTypes;
-Product.defaultProps = DefaultProps;
 
 const handleSubmit = (values,
   { props },
@@ -73,16 +75,7 @@ const handleSubmit = (values,
   const { onSave, id } = props;
   onSave( id,values );
 };
-const mapPropsToValues = ({product}) => ({
-  name: product.name,
-  amount: product.amount,
-});
-const validationSchema = yup.object().shape({
-  name: yup
-    .string()
-    .required('*Product name is required'),
-  amount: yup.number().required('*Amount is required'),
-});
-export default withFormik({ enableReinitialize: true,validationSchema, handleSubmit, mapPropsToValues })(
+
+export default withFormik({ enableReinitialize: true, validationSchema, mapPropsToValues, handleSubmit })(
   Product,
 );

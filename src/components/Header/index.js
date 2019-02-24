@@ -1,15 +1,13 @@
 import styled from 'styled-components';
-import { Flex, Text, Box as RebBox} from 'rebass';
+import { Flex, Box as RebBox} from 'rebass';
 import React from 'react';
 import { defaultProps } from 'recompose';
-import LogoImg from '../../assets/logo.png';
 
 const Box = defaultProps({
   alignSelf: 'left',
   fontSize: '25px',
   letterSpacing: '1px',
   fontWeight: 'bold',
-  fontWeight: 600,
   borderRadius: '2rem',
   bg:'#864949',
   color:'white',

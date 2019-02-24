@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { string, func, boolean, oneOfType, number } from 'prop-types';
+import { string, func, bool, oneOfType, number } from 'prop-types';
 import { Flex } from 'rebass';
 
 const PropTypes = {
@@ -12,7 +12,7 @@ const PropTypes = {
   value: oneOfType([string, number]),
   type: string,
   width: string,
-  disabled: boolean,
+  disabled: bool,
 };
 
 const DefaultProps = {
