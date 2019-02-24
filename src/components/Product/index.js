@@ -15,8 +15,7 @@ const PropTypes = {
   handleSubmit:func.isRequired,
   removeProduct: func.isRequired,
   id: number.isRequired,
-  buttonText: string.isRequired,
-  mode: string.isRequired,
+  editMode: string.isRequired,
 };
 
 const Form = styled.form`
@@ -27,8 +26,7 @@ const Form = styled.form`
 const Product = ({
     removeProduct, 
     id,
-    buttonText,
-    mode,
+    editMode,
     values,
     errors,
     touched,
@@ -47,7 +45,7 @@ const Product = ({
             value={values.name}
             error={getError('name', touched, errors)}
             width="300px"
-            disabled={mode==="view"? true : false}
+            disabled={editMode}
           />
           <TextInput
             placeholder="amount"
@@ -58,10 +56,10 @@ const Product = ({
             value={values.amount}
             error={getError('amount', touched, errors)}
             width="60px"
-            disabled={mode==="view"? true : false}
+            disabled={editMode}
           />
            <Button m={2} bg='#864949' type="button" onClick={()=>removeProduct(id)}>Remove</Button>
-           <Button m={2} bg='#864949' type="submit">{buttonText}</Button>
+           <Button m={2} bg='#864949' type="submit">{editMode ? "Edit" : "Save"}</Button>
           </Form>
         </Flex>
 

@@ -7,19 +7,16 @@ const mapStateToProps = state =>  state.products;
 
 const productContainer= compose(
   connect(mapStateToProps,null),
-  withState("buttonText","setButtonText","Edit"),
-  withState("mode","setMode","view"),
+  withState("editMode","setEditMode","false"),
   withProps((props)=>({
         onSave: (id,values) =>{
-            props.setButtonText("Save");
-            props.setMode("edit");
+            props.setEditMode(!props.editMode);
             const valuesWithId=values;
             valuesWithId.id=id;
             if(props.products[id].name!==values.name || props.products[id].amount!==values.amount)
              {
               props.editProduct(valuesWithId);
-              props.setButtonText("Edit");
-              props.setMode("view");
+              props.setEditMode(!props.editMode);
              }
         },
       })
