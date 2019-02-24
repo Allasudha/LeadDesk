@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, number, object, func } from 'prop-types';
+import { string, number, object, func, bool } from 'prop-types';
 import { Flex, Button } from 'rebass';
 import { withFormik } from 'formik';
 import styled from 'styled-components';
@@ -15,7 +15,7 @@ const PropTypes = {
   handleSubmit:func.isRequired,
   removeProduct: func.isRequired,
   id: number.isRequired,
-  editMode: string.isRequired,
+  editMode: bool.isRequired,
 };
 
 const Form = styled.form`
@@ -45,7 +45,7 @@ const Product = ({
             value={values.name}
             error={getError('name', touched, errors)}
             width="300px"
-            disabled={editMode}
+            disabled={!editMode}
           />
           <TextInput
             placeholder="amount"
@@ -56,10 +56,10 @@ const Product = ({
             value={values.amount}
             error={getError('amount', touched, errors)}
             width="60px"
-            disabled={editMode}
+            disabled={!editMode}
           />
            <Button m={2} bg='#864949' type="button" onClick={()=>removeProduct(id)}>Remove</Button>
-           <Button m={2} bg='#864949' type="submit">{editMode ? "Edit" : "Save"}</Button>
+           <Button m={2} bg='#864949' type="submit">{!editMode ? "Edit" : "Save"}</Button>
           </Form>
         </Flex>
 

@@ -12,7 +12,7 @@ const ShoppingList = ({products, removeProduct, editProduct}) => {
   return (
   <React.Fragment>
     {products.map((product, idx) => (
-      <ProductContainer key={idx} product={product} removeProduct={removeProduct} id={idx} editProduct={editProduct}/>
+      <ProductContainer key={idx+product.name} product={product} removeProduct={removeProduct} id={idx} editProduct={editProduct}/>
     ))}
   </React.Fragment>
 )};
